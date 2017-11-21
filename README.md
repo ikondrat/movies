@@ -17,6 +17,12 @@ Tested and expected to work in
  - run `npm run init`
  - run `npm run start`
 
-## Remarks
+## Issues
 Now it uses `https://micro-server-yxyocybxvl.now.sh/api/movies`
 because of `awa5lhb067.execute-api.eu-central-1.amazonaws.com` hasn't proper CORS headers
+
+## Further todo
+ - Write jest tests
+ - Describe models with propTypes
+ - Split actions
+ - Include stage-1 to the babel build
