@@ -3,7 +3,6 @@ import { PropTypes } from 'prop-types'
 import { connect } from 'react-redux'
 import { 
   fetchFilmIfNeeded,
-  toggleFilm,
   toggleOneFilm
 } from '../actions'
 import Film from '../components/Film'
