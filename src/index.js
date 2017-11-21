@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './containers/Home';
-import FilmDetails from './components/FilmDetails/';
+import Films from './containers/Home';
+import Film from './containers/Film';
 import registerServiceWorker from './registerServiceWorker';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {
@@ -14,8 +14,10 @@ ReactDOM.render(
   <MuiThemeProvider>
     <Router>
       <div>
-        <Route exact path="/" component={Home}/>
-        <Route exact path="/movies/:filmId" component={FilmDetails}/>
+        <Route exact path="/" component={Films}/>
+        <Route path="/movies/:filmId" render={({match}) => {
+          return <Film {...match}/>;
+        }}/>
       </div>
     </Router>
   </MuiThemeProvider>, 

@@ -7,9 +7,20 @@ export const RECEIVE_FILM = 'RECEIVE_FILM'
 export const TOGGLE_FILM= 'TOGGLE_FILM'
 export const INVALIDATE_FILM= 'INVALIDATE_FILM'
 
-export function toggleFilm(FILM) {
+const apiURL = 'https://micro-server-yxyocybxvl.now.sh/api';
+
+export function toggleFilm(FILM, films) {
   return {
     type: TOGGLE_FILM,
+    films: films,
+    FILM
+  }
+}
+
+export function toggleOneFilm(FILM, film) {
+  return {
+    type: TOGGLE_FILM,
+    film: film,
     FILM
   }
 }
@@ -43,11 +54,10 @@ function receiveFilms(films) {
 }
 
 function receiveFilm(FILM, json) {
-  debugger;
   return {
     type: RECEIVE_FILM,
     FILM,
-    films: json.data.children.map(child => child.data),
+    film: json,
     receivedAt: Date.now()
   }
 }
@@ -55,7 +65,7 @@ function receiveFilm(FILM, json) {
 function fetchFilms() {
   return dispatch => {
     dispatch(requestFilms())
-    return fetch(`https://micro-server-cuzctssnnq.now.sh/api/films.json`)
+    return fetch(`${apiURL}/movies`)
       .then((response, data) => {
         return response.json()
       })
@@ -66,14 +76,28 @@ function fetchFilms() {
 function fetchFilm(filmId) {
   return dispatch => {
     dispatch(requestFilm(filmId))
-    return fetch(`https://awa5lhb067.execute-api.eu-central-1.amazonaws.com/dev/movie/${filmId}`)
-      .then(response => response.json())
+    return fetch(`${apiURL}/movies/${filmId}`)
+      .then(response => {
+        return response.json();
+      })
       .then(json => dispatch(receiveFilm(filmId, json)))
   }
 }
 
 function shouldFetchFilms(state) {
   return true;
+}
+
+function shouldFetchFilm(state, filmId) {
+  return true;
+}
+
+export function fetchFilmIfNeeded(filmId) {
+  return (dispatch, getState) => {
+    if (shouldFetchFilm(getState(), filmId)) {
+      return dispatch(fetchFilm(filmId))
+    }
+  }
 }
 
 export function fetchFilmsIfNeeded() {

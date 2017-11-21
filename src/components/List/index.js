@@ -1,8 +1,8 @@
 import React from 'react';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import Star from 'material-ui/svg-icons/toggle/star';
-import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
+import {GridList, GridTile} from 'material-ui/GridList';
 import './style.css';
 import {
   Link

@@ -11,7 +11,6 @@ class Films extends Component {
   constructor(props) {
     super(props)
     this.toggleSelectedState = this.toggleSelectedState.bind(this)
-    this.handleRefreshClick = this.handleRefreshClick.bind(this)
   }
 
   componentDidMount() {
@@ -22,7 +21,6 @@ class Films extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // alert('recieve props');
     // const { dispatch } = nextProps
     //dispatch(fetchFilmsIfNeeded())
     /*
@@ -34,15 +32,9 @@ class Films extends Component {
   }
 
   toggleSelectedState (filmId) {
-    this.props.dispatch(toggleFilm(filmId))
-  }
-
-  handleRefreshClick(e) {
-    e.preventDefault()
-    alert('refresh');
-    // const { dispatch} = this.props
-    
-    // dispatch(fetchFilmsIfNeeded(selectedSubreddit))
+    this.props.dispatch(
+      toggleFilm(filmId, this.props.films)
+    );
   }
 
   render() {
@@ -86,15 +78,10 @@ function mapStateToProps(state) {
     isFetching: true
   };
 
-  if (state.movies.moviesList && 
-      state.movies.moviesList.films &&
-      state.movies.moviesList.films.length > 0) {
-    debugger;
-    stateData = state.movies.moviesList;
-    stateData.films = stateData.films.map((f) => {
-      f.isSelected = state.selectedFilms.some((item) => item === (f.id).toString());
-      return f;
-    });
+  if (state.movies && 
+      state.movies.films &&
+      state.movies.films.length > 0) {
+    stateData = state.movies;
   }
 
   return stateData;

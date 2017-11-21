@@ -1,31 +1,40 @@
 import React from 'react';
+import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import Star from 'material-ui/svg-icons/toggle/star';
+import IconButton from 'material-ui/IconButton';
+import {Card, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
-export default (props) => 
-<div className="card">
-  <div className="card-image">
-    <figure className="image is-4by3">
-      <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image"/>
-    </figure>
-  </div>
-  <div className="card-content">
-    <div className="media">
-      <div className="media-left">
-        <figure className="image is-48x48">
-          <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image"/>
-        </figure>
-      </div>
-      <div className="media-content">
-        <p className="title is-4">John Smith</p>
-        <p className="subtitle is-6">@johnsmith</p>
-      </div>
-    </div>
+const FavoriteAction = ({toggleSelectedState, film}) => {
+  return <IconButton onClick={() => toggleSelectedState(film.id)}>
+  {film.isSelected ? <Star color="white" /> : <StarBorder color="white" />}
+</IconButton>
+}
 
-    <div className="content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-      <a href="#">#css</a> <a href="#">#responsive</a>
-      <br/>
-      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-    </div>
-  </div>
-  </div>
+const styleImage = {
+  "height": 400,
+  "objectFit": "cover"
+};
+
+
+const CardExampleWithAvatar = ({film, toggleSelectedState}) => (
+  <Card>
+    <CardMedia
+      overlay={<CardTitle title={
+        <span>{film.title} ({film.releaseYear})<FavoriteAction film={film} toggleSelectedState={toggleSelectedState}/></span>
+        
+      } subtitle={film.category} />}
+    >
+      <img src={film.previewImage} alt="" style={styleImage}/>
+    </CardMedia>
+    
+    <CardText>
+      {film.description}
+      <h3>Stars</h3>
+      {film.stars && film.stars.map((star, i) => <div key={i}>{star}</div>)}
+    </CardText>
+  </Card>
+);
+
+
+
+export default CardExampleWithAvatar;
