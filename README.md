@@ -3,6 +3,12 @@
 - Plain css
 - Material UI
 
+## Browsers
+I havn't enable polifills(stage-1) for the Babel - don't think it does make sense without the string necessity
+Tested and expected to work in 
+- IE 11 +
+- Chome 62+
+
 ## How to run
  - clone the repository 
  - run `npm run init`
