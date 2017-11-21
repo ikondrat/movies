@@ -4,7 +4,9 @@
 - Material UI
 
 ## How to run
-Just clone the repository and run 'npm run start'
+ - clone the repository 
+ - run `npm run init`
+ - run `npm run start`
 
 ## Remarks
 Now it uses `https://micro-server-yxyocybxvl.now.sh/api/movies`
