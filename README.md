@@ -26,3 +26,6 @@ because of `awa5lhb067.execute-api.eu-central-1.amazonaws.com` hasn't proper COR
  - Describe models with propTypes
  - Split actions
  - Include stage-1 to the babel build
+ - Define isFetching state for the loading the Films state
+ - Cache already loaded films
+ - Make panel for the home page with filters
