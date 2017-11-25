@@ -6,6 +6,7 @@ import {
   toggleOneFilm
 } from '../actions'
 import Film from '../components/Film'
+import Progress from '../components/Progress'
 
 class FilmContainer extends Component {
   constructor(props) {
@@ -33,10 +34,10 @@ class FilmContainer extends Component {
           {lastUpdated &&
             <h2>Films</h2>
           }
-        {isFetching && film === 0 &&
-          <h2>Loading...</h2>
+        {isFetching && film === null &&
+          <Progress/>
         }
-        {!isFetching && film === 0 &&
+        {!isFetching && film === null &&
           <h2>Empty.</h2>
         }
         {film &&
@@ -59,7 +60,7 @@ FilmContainer.propTypes = {
 
 function mapStateToProps(state) {
   let stateData = state.movies && state.movies.film ? state.movies : {
-    film: {},
+    film: null,
     isFetching: true
   };
 

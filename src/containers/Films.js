@@ -6,6 +6,7 @@ import {
   toggleFilm
 } from '../actions'
 import List from '../components/List'
+import Progress from '../components/Progress'
 
 class Films extends Component {
   constructor(props) {
@@ -47,7 +48,7 @@ class Films extends Component {
             <h2>Films</h2>
           }
         {isFetching && films.length === 0 &&
-          <h2>Loading...</h2>
+          <Progress/>
         }
         {!isFetching && films.length === 0 &&
           <h2>Empty.</h2>
