@@ -53,7 +53,7 @@ class FilmContainer extends Component {
 }
 
 FilmContainer.propTypes = {
-  film: PropTypes.object.isRequired,
+  film: PropTypes.object,
   isFetching: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired
 }
