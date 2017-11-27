@@ -85,25 +85,36 @@ function fetchFilm(filmId) {
 }
 
 function shouldFetchFilms(state) {
-  return true;
+  return state.movies && state.movies.films.length > 9 ? false : true;
 }
 
 function shouldFetchFilm(state, filmId) {
-  return true;
+  return state.movies && state.movies.films ? 
+    !(state.movies.films.some(film => film.id.toString() === filmId)) : true;
 }
 
 export function fetchFilmIfNeeded(filmId) {
   return (dispatch, getState) => {
-    if (shouldFetchFilm(getState(), filmId)) {
+    const state = getState();
+    if (shouldFetchFilm(state, filmId)) {
       return dispatch(fetchFilm(filmId))
+    } else {
+      return dispatch(receiveFilm(
+        filmId,
+        state.movies.films.find(film => film.id.toString() === filmId)
+      ));
     }
+
   }
 }
 
 export function fetchFilmsIfNeeded() {
   return (dispatch, getState) => {
-    if (shouldFetchFilms(getState())) {
+    const films = getState();
+    if (shouldFetchFilms(films)) {
       return dispatch(fetchFilms())
+    } else {
+      return dispatch(receiveFilms(films.movies.films))
     }
   }
 }
