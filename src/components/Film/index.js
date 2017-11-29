@@ -1,40 +1,63 @@
 import React from 'react';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-import Star from 'material-ui/svg-icons/toggle/star';
-import IconButton from 'material-ui/IconButton';
 import {Card, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-
-const FavoriteAction = ({toggleSelectedState, film}) => {
-  return <IconButton onClick={() => toggleSelectedState(film.id)}>
-  {film.isSelected ? <Star color="white" /> : <StarBorder color="white" />}
-</IconButton>
-}
+import FavoriteAction from '../FavoriteAction/';
+import Actor from '../Actor/';
+import PropTypes from 'prop-types';
 
 const styleImage = {
   "height": 400,
   "objectFit": "cover"
 };
 
-
-const CardExampleWithAvatar = ({film, toggleSelectedState}) => (
+const CardExampleWithAvatar = ({
+  title,
+  releaseYear,
+  category,
+  previewImage,
+  toggleSelectedState,
+  description,
+  stars,
+  isSelected,
+  filmId
+}) => (
   <Card>
     <CardMedia
       overlay={<CardTitle title={
-        <span>{film.title} ({film.releaseYear})<FavoriteAction film={film} toggleSelectedState={toggleSelectedState}/></span>
+        <span>
+          {title} ({releaseYear})
+          <FavoriteAction 
+            filmId={filmId}
+            toggleSelectedState={() => toggleSelectedState(filmId)}
+            isSelected={isSelected}
+          />
+        </span>
         
-      } subtitle={film.category} />}
+      } subtitle={category} />}
     >
-      <img src={film.previewImage} alt="" style={styleImage}/>
+      <img src={previewImage} alt="" style={styleImage}/>
     </CardMedia>
     
     <CardText>
-      {film.description}
+      {description}
       <h3>Stars</h3>
-      {film.stars && film.stars.map((star, i) => <div key={i}>{star}</div>)}
+      {stars && stars.map((star, i) => <Actor key={i} name={star}/>)}
     </CardText>
   </Card>
 );
 
+
+CardExampleWithAvatar.propTypes = {
+  title: PropTypes.string.isRequired,
+  releaseYear: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  previewImage: PropTypes.string.isRequired,
+  toggleSelectedState: PropTypes.func.isRequired,
+  description: PropTypes.string.isRequired,
+  stars: PropTypes.array.isRequired,
+  isSelected: PropTypes.bool.isRequired,
+  filmId: PropTypes.string.isRequired
+  
+};
 
 
 export default CardExampleWithAvatar;
