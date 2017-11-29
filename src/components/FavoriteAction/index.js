@@ -2,7 +2,6 @@ import React from 'react';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import Star from 'material-ui/svg-icons/toggle/star';
 import IconButton from 'material-ui/IconButton';
-
 import PropTypes from 'prop-types';
 
 const FavoriteAction = ({toggleSelectedState, filmId, isSelected}) => {
@@ -12,7 +11,7 @@ const FavoriteAction = ({toggleSelectedState, filmId, isSelected}) => {
 };
 
 FavoriteAction.propTypes = {
-  filmId: PropTypes.string.isRequired,
+  filmId: PropTypes.number.isRequired,
   toggleSelectedState: PropTypes.func.isRequired,
   isSelected: PropTypes.bool.isRequired,
 };

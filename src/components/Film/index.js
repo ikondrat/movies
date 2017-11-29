@@ -9,7 +9,7 @@ const styleImage = {
   "objectFit": "cover"
 };
 
-const CardExampleWithAvatar = ({
+const Film = ({
   title,
   releaseYear,
   category,
@@ -18,7 +18,7 @@ const CardExampleWithAvatar = ({
   description,
   stars,
   isSelected,
-  filmId
+  id
 }) => (
   <Card>
     <CardMedia
@@ -26,15 +26,15 @@ const CardExampleWithAvatar = ({
         <span>
           {title} ({releaseYear})
           <FavoriteAction 
-            filmId={filmId}
-            toggleSelectedState={() => toggleSelectedState(filmId)}
+            filmId={id}
+            toggleSelectedState={() => toggleSelectedState(id)}
             isSelected={isSelected}
           />
         </span>
         
       } subtitle={category} />}
     >
-      <img src={previewImage} alt="" style={styleImage}/>
+      <img src={previewImage} alt={title} style={styleImage}/>
     </CardMedia>
     
     <CardText>
@@ -46,18 +46,17 @@ const CardExampleWithAvatar = ({
 );
 
 
-CardExampleWithAvatar.propTypes = {
+Film.propTypes = {
   title: PropTypes.string.isRequired,
-  releaseYear: PropTypes.string.isRequired,
+  releaseYear: PropTypes.number.isRequired,
   category: PropTypes.string.isRequired,
   previewImage: PropTypes.string.isRequired,
   toggleSelectedState: PropTypes.func.isRequired,
   description: PropTypes.string.isRequired,
   stars: PropTypes.array.isRequired,
   isSelected: PropTypes.bool.isRequired,
-  filmId: PropTypes.string.isRequired
-  
+  id: PropTypes.number.isRequired
 };
 
 
-export default CardExampleWithAvatar;
+export default Film;

@@ -1,12 +1,8 @@
 import React from 'react';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-import Star from 'material-ui/svg-icons/toggle/star';
-import IconButton from 'material-ui/IconButton';
-import {GridList, GridTile} from 'material-ui/GridList';
+import {GridList} from 'material-ui/GridList';
+import ListItem from '../ListItem/';
+import PropTypes from 'prop-types';
 import './style.css';
-import {
-  Link
-} from 'react-router-dom';
 
 const styles = {
   root: {
@@ -18,23 +14,25 @@ const styles = {
     overflowY: 'auto',
   },
 };
-export default ({items, toggleSelectedState}) => (
+
+const List = ({films, toggleSelectedState}) => (
   <div style={styles}>
     <GridList
-    cellHeight={180}
-    style={styles.gridList}>
-    {items.map((element, i) => (
-      <GridTile
-        key={element.id}
-        title={<Link className="link" to={`/movies/${element.id}`}>{element.title}</Link>}
-        subtitle={<Link className="link" to={`/movies/${element.id}`}><span>{element.description}</span></Link>}
-        actionIcon={<IconButton onClick={() => toggleSelectedState(element.id)}>
-          {element.isSelected ? <Star color="white" /> : <StarBorder color="white" />}
-        </IconButton>}
-      >
-        <img src={element.previewImage} alt={element.title}/>
-      </GridTile>
-    ))}
-  </GridList>
+      cellHeight={180}
+      style={styles.gridList}>
+        {films.map((film, i) => (
+          <ListItem 
+            {...film}
+            toggleSelectedState={toggleSelectedState}
+            key={i}
+          />
+        ))}
+    </GridList>
   </div>
 )
+List.propTypes = {
+  films: PropTypes.array.isRequired,
+  toggleSelectedState: PropTypes.func.isRequired
+};
+
+export default List;

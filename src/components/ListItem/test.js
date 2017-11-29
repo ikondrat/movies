@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Film from './';
+import ListItem from './';
 import '../../setupTests';
 
 it('renders without crashing', () => {
-  shallow(<Film 
-    filmId="testId"
+  shallow(<ListItem 
+    id="testId"
     title="test title"
     releaseYear="2012"
     category="comedy"
@@ -16,11 +16,3 @@ it('renders without crashing', () => {
     isSelected={false}
   />);
 });
-
-/*
-it('renders Film', () => {
-  const wrapper = shallow(<Film />);
-  const title = <h2>Home</h2>;
-  expect(wrapper.contains(title)).toEqual(true);
-});
-*/

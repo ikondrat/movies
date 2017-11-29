@@ -55,7 +55,10 @@ class Films extends Component {
         }
         {films.length > 0 &&
           <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-            <List items={films} toggleSelectedState={this.toggleSelectedState}/>
+            <List 
+              films={films} 
+              toggleSelectedState={this.toggleSelectedState}
+            />
           </div>
         }
           </div>

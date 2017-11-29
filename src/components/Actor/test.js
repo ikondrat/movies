@@ -9,7 +9,7 @@ it('renders without crashing', () => {
   />);
 });
 
-it('renders correct actore', () => {
+it('renders correct actor', () => {
   expect(shallow(<Actor 
     name="George"
   />).contains(

@@ -4,9 +4,9 @@ import { connect } from 'react-redux'
 import { 
   fetchFilmIfNeeded,
   toggleOneFilm
-} from '../actions'
-import Film from '../components/Film'
-import Progress from '../components/Progress'
+} from '../../actions'
+import Film from '../../components/Film'
+import Progress from '../../components/Progress'
 
 class FilmContainer extends Component {
   constructor(props) {
@@ -42,7 +42,10 @@ class FilmContainer extends Component {
         }
         {film &&
           <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-            <Film film={film} toggleSelectedState={this.toggleSelectedState}/>
+            <Film 
+              {...film}
+              toggleSelectedState={this.toggleSelectedState}
+            />
           </div>
         }
           </div>
