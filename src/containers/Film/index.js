@@ -31,23 +31,23 @@ class FilmContainer extends Component {
       <div>
         <div className="card">
           <div className="card-content">
-          {lastUpdated &&
-            <h2>Films</h2>
-          }
-        {isFetching && film === null &&
-          <Progress/>
-        }
-        {!isFetching && film === null &&
-          <h2>Empty.</h2>
-        }
-        {film &&
-          <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-            <Film 
-              {...film}
-              toggleSelectedState={this.toggleSelectedState}
-            />
-          </div>
-        }
+            {lastUpdated &&
+              <h2>Films</h2>
+            }
+            {isFetching && film === null &&
+              <Progress/>
+            }
+            {!isFetching && film === null &&
+              <h2>Empty.</h2>
+            }
+            {film &&
+              <div style={{ opacity: isFetching ? 0.5 : 1 }}>
+                <Film 
+                  {...film}
+                  toggleSelectedState={this.toggleSelectedState}
+                />
+              </div>
+            }
           </div>
         </div>
       </div>

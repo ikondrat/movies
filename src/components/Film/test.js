@@ -5,9 +5,9 @@ import '../../setupTests';
 
 it('renders without crashing', () => {
   shallow(<Film 
-    filmId="testId"
+    id={2}
     title="test title"
-    releaseYear="2012"
+    releaseYear={2012}
     category="comedy"
     previewImage="https://yandex.ru/x.gif"
     toggleSelectedState={() => console.log('toggle selection')}

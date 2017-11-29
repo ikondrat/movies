@@ -4,15 +4,14 @@ import List from './';
 import '../../setupTests';
 
 it('renders without crashing', () => {
-  shallow(<List films={[
+  shallow(<List 
+    toggleSelectedState={() => console.log('test')}
+    films={[
     {
-      id: "test",
+      id:1,
       isSelected: false,
       title: "test film title",
       description: "test film description",
-      toggleSelectedState: function() {
-
-      },
       previewImage: "https://www.google.com/x.gif"
     }
   ]}/>);

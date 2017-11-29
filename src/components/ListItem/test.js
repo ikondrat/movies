@@ -5,7 +5,7 @@ import '../../setupTests';
 
 it('renders without crashing', () => {
   shallow(<ListItem 
-    id="testId"
+    id={1}
     title="test title"
     releaseYear="2012"
     category="comedy"

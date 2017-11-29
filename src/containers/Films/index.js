@@ -4,9 +4,9 @@ import { connect } from 'react-redux'
 import { 
   fetchFilmsIfNeeded,
   toggleFilm
-} from '../actions'
-import List from '../components/List'
-import Progress from '../components/Progress'
+} from '../../actions'
+import List from '../../components/List'
+import Progress from '../../components/Progress'
 
 class Films extends Component {
   constructor(props) {
@@ -19,17 +19,6 @@ class Films extends Component {
     dispatch(
       fetchFilmsIfNeeded()
     )
-  }
-
-  componentWillReceiveProps(nextProps) {
-    // const { dispatch } = nextProps
-    //dispatch(fetchFilmsIfNeeded())
-    /*
-    if (nextProps.selectedSubreddit !== this.props.selectedSubreddit) {
-      const { dispatch, selectedSubreddit } = nextProps
-      dispatch(fetchFilmsIfNeeded(selectedSubreddit))
-    }
-    */
   }
 
   toggleSelectedState (filmId) {

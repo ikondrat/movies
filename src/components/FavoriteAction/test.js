@@ -7,7 +7,7 @@ import '../../setupTests';
 
 it('renders without crashing', () => {
   shallow(<FavoriteAction 
-    filmId="testId"
+    filmId={1}
     toggleSelectedState={() => console.log('toggle selection')}
     isSelected={false}
   />);
@@ -15,7 +15,7 @@ it('renders without crashing', () => {
 
 it('renders action with correct states', () => {
   expect(shallow(<FavoriteAction 
-    filmId="testId"
+    filmId={1}
     toggleSelectedState={() => console.log('toggle selection')}
     isSelected={true}
   />).contains(
@@ -23,7 +23,7 @@ it('renders action with correct states', () => {
   )).toEqual(true);
 
   expect(shallow(<FavoriteAction 
-    filmId="testId"
+    filmId={2} 
     toggleSelectedState={() => console.log('toggle selection')}
     isSelected={false}
   />).contains(
